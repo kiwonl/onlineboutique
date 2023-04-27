@@ -92,8 +92,6 @@ profiles:
   - op: add
     path: /manifests/kustomize/paths/1
     value: kustomize/components/network-policies
-global:
-  default-repo: us-central1-docker.pkg.dev/anthos-multicloud-385006/docker-repo
 ---
 apiVersion: skaffold/v3
 kind: Config
@@ -111,5 +109,3 @@ manifests:
   - ./kubernetes-manifests/loadgenerator.yaml
 deploy:
   kubectl: {}
-global:
-  default-repo: us-central1-docker.pkg.dev/anthos-multicloud-385006/docker-repo
