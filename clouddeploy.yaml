@@ -18,7 +18,7 @@ metadata:
   name: hipster-dev
 description: cluster for developer environment
 gke:
-  cluster: projects/anthos-multicloud/locations/us-central1-c/clusters/hipster-dev
+  cluster: projects/anthos-multicloud-385006/locations/us-central1-c/clusters/hipster-dev
 # ---
 # apiVersion: deploy.cloud.google.com/v1
 # kind: Target
