@@ -32,4 +32,7 @@ gcloud projects add-iam-policy-binding anthos-multicloud-385006 \
 # https://cloud.google.com/deploy/docs/cloud-deploy-service-account?hl=ko#required_permissions 
 gcloud projects add-iam-policy-binding anthos-multicloud-385006 \
     --member=serviceAccount:744380832567@cloudbuild.gserviceaccount.com \
-    --role="roles/clouddeploy.releaser"    
+    --role="roles/clouddeploy.releaser"
+gcloud projects add-iam-policy-binding anthos-multicloud-385006 \
+    --member=serviceAccount:744380832567@cloudbuild.gserviceaccount.com \
+    --role="roles/iam.serviceAccountUser"    
