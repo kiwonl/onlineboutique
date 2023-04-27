@@ -1,0 +1,38 @@
+apiVersion: deploy.cloud.google.com/v1
+kind: DeliveryPipeline
+metadata:
+  name: hipster-deliverypipeline
+description: delivery pipeline for hipster
+serialPipeline:
+  stages:
+  - targetId: hipster-dev
+    profiles: []
+#  - targetId: hipster-stg
+#    profiles: []
+#  - targetId: hipster-prod
+#    profiles: []
+---
+apiVersion: deploy.cloud.google.com/v1
+kind: Target
+metadata:
+  name: hipster-dev
+description: cluster for developer environment
+gke:
+  cluster: projects/anthos-multicloud/locations/us-central1-c/clusters/hipster-dev
+# ---
+# apiVersion: deploy.cloud.google.com/v1
+# kind: Target
+# metadata:
+#   name: hipster-stg
+# description: cluster for staging environment
+# gke:
+#   cluster: projects/kw-appmod-sandbox/locations/asia-northeast1/clusters/hipster-stg
+# ---
+# apiVersion: deploy.cloud.google.com/v1
+# kind: Target
+# metadata:
+#   name: hipster-prod
+# description: cluster for production environment
+# requireApproval: true ## for manual approval
+# gke:
+#   cluster: projects/kw-appmod-sandbox/locations/asia-northeast1/clusters/hipster-prod
