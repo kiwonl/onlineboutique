@@ -48,10 +48,10 @@ build:
     gitCommit: {}
   local:
     useBuildkit: false
-manifests:
-  kustomize:
-    paths:
-    - kubernetes-manifests
+#manifests:
+#  kustomize:
+#    paths:
+#    - kubernetes-manifests
 # https://cloud.google.com/deploy/docs/using-skaffold/managing-manifests#rendering_using_helm
 deploy:
   helm:
