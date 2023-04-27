@@ -57,10 +57,10 @@ deploy:
   helm:
     releases:
       - name: onlineboutique
+        remoteChart: oci://us-central1-docker.pkg.dev/anthos-multicloud-385006/chart-repo/onlineboutique
         setValueTemplates:
           images.repository: us-central1-docker.pkg.dev/anthos-multicloud-385006/docker-repo
-          images.tag: ""
-        chartPath: oci://us-central1-docker.pkg.dev/anthos-multicloud-385006/chart-repo/onlineboutique
+          images.tag: ""        
 # "gcb" profile allows building and pushing the images
 # on Google Container Builder without requiring docker
 # installed on the developer machine. However, note that
