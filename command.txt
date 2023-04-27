@@ -1,0 +1,7 @@
+1. GKE 클러스터 생성
+gcloud container clusters create hipster-dev --region us-central1-cache
+
+2. Cloud Build 트리거 생성
+
+3. Cloud Deploy Buildpipeline 생성
+gcloud deploy apply --file=clouddeploy.yaml --region=us-central1 --project anthos-multicloud-385006

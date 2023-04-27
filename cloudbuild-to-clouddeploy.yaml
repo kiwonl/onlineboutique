@@ -6,7 +6,7 @@ steps:
   args:
     - skaffold
     - build
-    - '--filename=skaffold-helm' # if you want to change the build method (kubectl/helm), please change the skaffold filename.
+    - '--filename=skaffold-helm.yaml' # if you want to change the build method (kubectl/helm), please change the skaffold filename.
     - '--interactive=false'
     - '--file-output=/workspace/artifacts.json'
 - name: gcr.io/google.com/cloudsdktool/cloud-sdk
