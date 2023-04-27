@@ -18,7 +18,8 @@ steps:
       "--delivery-pipeline", "${_PIPELINE_NAME}",
       "--region", "${LOCATION}",
       "--annotations", "commitId=${REVISION_ID}",
-      "--build-artifacts", "/workspace/artifacts.json"
+      "--build-artifacts", "/workspace/artifacts.json",
+      "--skaffold-file", "skaffold-helm.yaml"
     ]
 substitutions:
     _PIPELINE_NAME: hipster-deliverypipeline

@@ -17,4 +17,19 @@ gcloud projects add-iam-policy-binding anthos-multicloud-385006 \
 gcloud projects add-iam-policy-binding anthos-multicloud-385006 \
     --member=serviceAccount:$(gcloud projects describe anthos-multicloud-385006 \
     --format="value(projectNumber)")-compute@developer.gserviceaccount.com \
+    --role="roles/container.developer"
+
+Cloud Build 에서 배포하기 떄문에, Cloud Build 의 SA 에 권한 부여
+
+# https://cloud.google.com/deploy/docs/cloud-deploy-service-account?hl=ko#execution_service_account
+gcloud projects add-iam-policy-binding anthos-multicloud-385006 \
+    --member=serviceAccount:744380832567@cloudbuild.gserviceaccount.com \
+    --role="roles/clouddeploy.jobRunner"
+gcloud projects add-iam-policy-binding anthos-multicloud-385006 \
+    --member=serviceAccount:744380832567@cloudbuild.gserviceaccount.com \
     --role="roles/container.developer"    
+
+# https://cloud.google.com/deploy/docs/cloud-deploy-service-account?hl=ko#required_permissions 
+gcloud projects add-iam-policy-binding anthos-multicloud-385006 \
+    --member=serviceAccount:744380832567@cloudbuild.gserviceaccount.com \
+    --role="roles/clouddeploy.releaser"    
