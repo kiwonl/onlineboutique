@@ -10,14 +10,13 @@ gcloud deploy apply --file=clouddeploy.yaml --region=us-central1 --project antho
 
 https://cloud.google.com/deploy/docs/deploy-app-gke#before-you-begin
 
+# cloud deploy 에서 cloud build 로 rendering 을 위해 helm chart repo(Artifact Registyry) 에 접근할때, VM SA 로 하기 때문에, 아래와 같은 에러 발생 시 권한을 줘야 함
+time="2023-04-27T15:21:00Z" level=error msg="Error: GET \"https://us-central1-docker.pkg.dev/v2/anthos-multicloud-385006/chart-repo/onlineboutique/tags/list\": GET \"https://us-central1-docker.pkg.dev/v2/token?scope=repository%!A(MISSING)anthos-multicloud-385006%!F(MISSING)chart-repo%!F(MISSING)onlineboutique%!A(MISSING)pull&service=us-central1-docker.pkg.dev\": unexpected status code 403: denied: Permission \"artifactregistry.repositories.downloadArtifacts\" denied on resource \"projects/anthos-multicloud-385006/locations/us-central1/repositories/chart-repo\" (or it may not exist)\n" subtask=2 task=Render
+
 gcloud projects add-iam-policy-binding anthos-multicloud-385006 \
     --member=serviceAccount:$(gcloud projects describe anthos-multicloud-385006 \
     --format="value(projectNumber)")-compute@developer.gserviceaccount.com \
-    --role="roles/clouddeploy.jobRunner"
-gcloud projects add-iam-policy-binding anthos-multicloud-385006 \
-    --member=serviceAccount:$(gcloud projects describe anthos-multicloud-385006 \
-    --format="value(projectNumber)")-compute@developer.gserviceaccount.com \
-    --role="roles/container.developer"
+    --role="roles/artifactregistry.serviceAgent"
 
 Cloud Build 에서 배포하기 떄문에, Cloud Build 의 SA 에 권한 부여
 
@@ -36,3 +35,7 @@ gcloud projects add-iam-policy-binding anthos-multicloud-385006 \
 gcloud projects add-iam-policy-binding anthos-multicloud-385006 \
     --member=serviceAccount:744380832567@cloudbuild.gserviceaccount.com \
     --role="roles/iam.serviceAccountUser"    
+
+gcloud projects add-iam-policy-binding anthos-multicloud-385006 \
+    --member=serviceAccount:744380832567@cloudbuild.gserviceaccount.com \
+    --role="roles/artifactregistry.serviceAgent"    
