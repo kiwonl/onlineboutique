@@ -1,15 +1,15 @@
 # https://cloud.google.com/deploy/docs/integrating-ci?hl=ko#an_example_configuration_using_skaffold
 # [START cloudbuild_microservice_demo_cloudbuild]
 steps:
-- id: 'Deploy application to cluster'
-  name: gcr.io/k8s-skaffold/skaffold
-  args:
-    - skaffold
-    - build
-    - '--filename=skaffold-helm.yaml' # if you want to change the build method (kubectl/helm), please change the skaffold filename.
-    - '--interactive=false'
-    - '--file-output=/workspace/artifacts.json'
-    - '--default-repo=${_DEFAUILT_REPO}'
+#- id: 'Deploy application to cluster'
+#  name: gcr.io/k8s-skaffold/skaffold
+#  args:
+#    - skaffold
+#    - build
+#    - '--filename=skaffold-helm.yaml' # if you want to change the build method (kubectl/helm), please change the skaffold filename.
+#    - '--interactive=false'
+#    - '--file-output=/workspace/artifacts.json'
+#    - '--default-repo=${_DEFAUILT_REPO}'
 - name: gcr.io/google.com/cloudsdktool/cloud-sdk
   entrypoint: gcloud
   args:

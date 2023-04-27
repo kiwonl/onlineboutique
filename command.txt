@@ -5,3 +5,16 @@ gcloud container clusters create hipster-dev --region us-central1-cache
 
 3. Cloud Deploy Buildpipeline 생성
 gcloud deploy apply --file=clouddeploy.yaml --region=us-central1 --project anthos-multicloud-385006
+
+
+
+https://cloud.google.com/deploy/docs/deploy-app-gke#before-you-begin
+
+gcloud projects add-iam-policy-binding anthos-multicloud-385006 \
+    --member=serviceAccount:$(gcloud projects describe anthos-multicloud-385006 \
+    --format="value(projectNumber)")-compute@developer.gserviceaccount.com \
+    --role="roles/clouddeploy.jobRunner"
+gcloud projects add-iam-policy-binding anthos-multicloud-385006 \
+    --member=serviceAccount:$(gcloud projects describe anthos-multicloud-385006 \
+    --format="value(projectNumber)")-compute@developer.gserviceaccount.com \
+    --role="roles/container.developer"    
