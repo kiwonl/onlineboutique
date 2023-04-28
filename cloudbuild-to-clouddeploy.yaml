@@ -2,7 +2,7 @@
 # [START cloudbuild_microservice_demo_cloudbuild]
 steps:
 - id: 'Deploy application to cluster'
-  name: gcr.io/k8s-skaffold/skaffold
+  name: gcr.io/k8s-skaffold/skaffold:v2.3.1
   args:
     - skaffold
     - build
