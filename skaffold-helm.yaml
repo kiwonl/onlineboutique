@@ -45,7 +45,9 @@ build:
   - image: adservice
     context: src/adservice
   tagPolicy:
-    gitCommit: {}
+  # gitCommit: {}
+    envTemplate:
+      template: "{{.IMAGE_TAG_NAME}}"
   local:
     useBuildkit: false
 #manifests:
