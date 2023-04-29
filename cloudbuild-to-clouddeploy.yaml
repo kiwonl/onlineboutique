@@ -1,7 +1,7 @@
 # https://cloud.google.com/deploy/docs/integrating-ci?hl=ko#an_example_configuration_using_skaffold
 # [START cloudbuild_microservice_demo_cloudbuild]
 steps:
-- id: 'Deploy application to cluster'
+- id: 'Container image build and tagging by skaffold build'
   name: gcr.io/k8s-skaffold/skaffold:v2.3.1
   args:
     - skaffold
@@ -22,6 +22,6 @@ steps:
       "--skaffold-file", "skaffold-helm.yaml"
     ]
 substitutions:
-    _PIPELINE_NAME: hipster-deliverypipeline
-    _DEFAUILT_REPO: us-central1-docker.pkg.dev/anthos-multicloud-385006/docker-repo
+  _PIPELINE_NAME: hipster-deliverypipeline
+  _DEFAUILT_REPO: us-central1-docker.pkg.dev/anthos-multicloud-385006/docker-repo
 # [END cloudbuild_microservice_demo_cloudbuild]
